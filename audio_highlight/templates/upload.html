@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Identifying highlights in your audio</title>
+</head>
+<body>
+    <h1>Upload and Identifying highlights in your audio</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3,.wav,.mp4">
+        <br>
+        <input type="submit" value="Upload and Transcribe">
+    </form>
+
+    {% if highlights %}
+        <h2>Auto Highlights:</h2>
+        <ul>
+        {% for highlight in highlights %}
+            <li><strong>Text:</strong> {{ highlight.text }}, <strong>Count:</strong> {{ highlight.count }}, <strong>Rank:</strong> {{ highlight.rank }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <footer>
+        <p>visit  <a href="https://github.com/coding4vinayak" target="_blank">Vinayak Sonawane github</a></p>
+    </footer>
+</body>
+</html>

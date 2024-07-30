@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Identify speakers in your audio</title>
+</head>
+<body>
+    <h1>Upload and Identify speakers in your audio</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3,.wav,.mp4">
+        <br>
+        <input type="submit" value="Upload and Transcribe">
+    </form>
+
+    {% if transcript %}
+        <h2>Transcription Result:</h2>
+        <ul>
+        {% for item in transcript %}
+            <li><strong>{{ item.speaker }}</strong>: {{ item.text }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <footer>
+        <p>visit  <a href="https://github.com/coding4vinayak" target="_blank">Vinayak Sonawane github</a></p>
+    </footer>
+</body>
+</html>

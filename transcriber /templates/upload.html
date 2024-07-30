@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Audio</title>
+</head>
+<body>
+    <h1>Upload Audio File</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Display transcription result if available -->
+    {% if transcript %}
+        <h2>Transcription Result:</h2>
+        <p>{{ transcript }}</p>
+    {% endif %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3,.wav,.mp4">
+        <br>
+        <label for="api_key">Optional API Key:</label>
+        <input type="text" id="api_key" name="api_key">
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    
+    <!-- Portfolio Link -->
+    <footer>
+        <p>visit  <a href="https://github.com/coding4vinayak" target="_blank">Vinayak Sonawane github</a></p>
+    </footer>
+</body>
+</html>

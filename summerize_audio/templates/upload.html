@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Summarize Audio</title>
+</head>
+<body>
+    <h1>Upload and Summarize Audio File</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3,.wav,.mp4">
+        <br>
+        <input type="submit" value="Upload and Summarize">
+    </form>
+
+    {% if transcription %}
+        <h2>Original Transcription:</h2>
+        <p>{{ transcription }}</p>
+    {% endif %}
+
+    {% if summary %}
+        <h2>Summarized Text:</h2>
+        <p>{{ summary }}</p>
+    {% endif %}
+    <footer>
+        <p>visit  <a href="https://github.com/coding4vinayak" target="_blank">Vinayak Sonawane github</a></p>
+    </footer>
+</body>
+</html>
+
+    
+
